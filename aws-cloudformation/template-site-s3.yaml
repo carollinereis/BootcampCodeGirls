@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Template para criar um site estatico no Amazon S3 (versao moderna sem ACLs).
+  Este template cria um bucket S3 configurado para hospedagem de site e usa uma politica de bucket para permitir acesso publico de leitura.
+
+Parameters:
+  BucketName:
+    Description: >
+      O nome do bucket S3 que sera criado. O nome deve ser unico globalmente.
+      Use apenas letras minusculas, numeros e hifens.
+    Type: String
+    ConstraintDescription: O nome do bucket deve ser unico e em letras minusculas.
+
+Resources:
+  # Recurso 1: O Bucket S3
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref BucketName
+      
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      OwnershipControls: # ADICIONAMOS ESTE BLOCO PARA GERENCIAR A PROPRIEDADE DO OBJETO
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+
+  # Recurso 2: A politica de acesso do Bucket
+  # A POLITICA ABAIXO AGORA E A UNICA FORMA DE TORNAR O BUCKET PUBLICO
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt S3Bucket.WebsiteURL
+    Description: URL para o site hospedado no bucket S3
+  BucketName:
+    Value: !Ref S3Bucket
+    Description: Nome do bucket S3 criado
