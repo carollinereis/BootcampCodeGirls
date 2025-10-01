@@ -1,0 +1,62 @@
+[
+    {
+        "id": "NF - 1",
+        "cliente": "Maria Oliveira",
+        "valor": 4721.71,
+        "data_emissão": "2025-09-18"
+    },
+    {
+        "id": "NF - 2",
+        "cliente": "João Silva",
+        "valor": 2810.52,
+        "data_emissão": "2025-09-09"
+    },
+    {
+        "id": "NF - 3",
+        "cliente": "Carlos Santos",
+        "valor": 3321.35,
+        "data_emissão": "2025-09-17"
+    },
+    {
+        "id": "NF - 4",
+        "cliente": "Pedro Lima",
+        "valor": 1024.3,
+        "data_emissão": "2025-09-28"
+    },
+    {
+        "id": "NF - 5",
+        "cliente": "Pedro Lima",
+        "valor": 356.99,
+        "data_emissão": "2025-09-26"
+    },
+    {
+        "id": "NF - 6",
+        "cliente": "Ana Costa",
+        "valor": 1686.48,
+        "data_emissão": "2025-09-06"
+    },
+    {
+        "id": "NF - 7",
+        "cliente": "Maria Oliveira",
+        "valor": 4614.37,
+        "data_emissão": "2025-09-08"
+    },
+    {
+        "id": "NF - 8",
+        "cliente": "Ana Costa",
+        "valor": 4668.62,
+        "data_emissão": "2025-09-03"
+    },
+    {
+        "id": "NF - 9",
+        "cliente": "João Silva",
+        "valor": 2779.89,
+        "data_emissão": "2025-09-09"
+    },
+    {
+        "id": "NF - 10",
+        "cliente": "Carlos Santos",
+        "valor": 3317.12,
+        "data_emissão": "2025-09-27"
+    }
+]
